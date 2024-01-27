@@ -1,4 +1,4 @@
-import footer from "../../../public/footer.svg";
+import footer from "public/footer.svg";
 
 type FooterListDataItem = {
   name: string;
