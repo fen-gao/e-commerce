@@ -3,7 +3,7 @@ import { Footer } from "./components/footer";
 import { Navbar } from "./components/navbar";
 import { useContext } from "react";
 import { GlobalContext } from "./context/global";
-import Checkout from "./pages/checkout";
+import { Checkout } from "./pages/checkout";
 import useMenu from "./hooks/use-menu";
 
 export function App() {

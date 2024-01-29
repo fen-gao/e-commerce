@@ -1,7 +1,7 @@
-import ProductList from "../../components/list";
-import { Products } from "../../types/products/ index";
+import { ProductList } from "../../components/list";
+import { Products } from "../../types/products";
 
-const Home = ({ productList }: { productList: Products[] }) => {
+export const Home = ({ productList }: { productList: Products[] }) => {
   return <ProductList products={productList} />;
 };
 

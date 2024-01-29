@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Products } from "../products/ index";
+import { Products } from "../products";
 
 export type OptionsType = "menor" | "maior" | "mais" | "menos";
 
@@ -9,6 +9,8 @@ export interface GlobalContextProps {
   amountCart: number;
   amoutPrice?: number;
   filteredProductList: Products[];
+  isLoading: boolean;
+  error: Error | null;
   handleFilterProductsByName: (value: string) => void;
   handleSort: (sortOption: OptionsType) => void;
   handleAddToCart: (product: Products) => void;

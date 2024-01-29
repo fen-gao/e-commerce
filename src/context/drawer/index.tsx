@@ -1,9 +1,5 @@
 import { createContext, ReactNode, useState } from "react";
-
-interface DrawerContextProps {
-  isDrawerOpen: boolean;
-  toggleDrawer: () => void;
-}
+import { DrawerContextProps } from "../../types/drawer";
 
 export const DrawerContext = createContext({} as DrawerContextProps);
 
@@ -11,9 +7,9 @@ interface DrawerContextProviderProps {
   children: ReactNode;
 }
 
-export function DrawerContextProvider({
+export const DrawerContextProvider = ({
   children,
-}: DrawerContextProviderProps) {
+}: DrawerContextProviderProps) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -25,4 +21,4 @@ export function DrawerContextProvider({
       {children}
     </DrawerContext.Provider>
   );
-}
+};

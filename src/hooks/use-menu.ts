@@ -1,9 +1,9 @@
 import { useMemo } from "react";
-import Home from "../pages/home/ index";
-import Male from "../pages/male";
-import Female from "../pages/famale";
-import Unisex from "../pages/unisex";
-import { Products } from "../types/products/ index";
+import { Home } from "../pages/home/ index";
+import { Male } from "../pages/male";
+import { Female } from "../pages/famale";
+import { Accessories } from "../pages/accessories";
+import { Products } from "../types/products";
 
 export interface MenuItem<P = Record<string, unknown>> {
   route: string;
@@ -32,9 +32,9 @@ const useMenu = () => {
         component: Female,
       },
       {
-        route: "/unisex",
-        label: "Unisex",
-        component: Unisex,
+        route: "/acessorios",
+        label: "Acessórios",
+        component: Accessories,
       },
     ];
   }, []);

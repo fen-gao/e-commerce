@@ -20,7 +20,7 @@ export interface ButtonProps
   customStyle?: string;
 }
 
-function ButtonBase(props: ButtonProps) {
+export const ButtonBase = (props: ButtonProps) => {
   const {
     iconStart,
     iconEnd,
@@ -48,6 +48,4 @@ function ButtonBase(props: ButtonProps) {
       </button>
     </div>
   );
-}
-
-export default ButtonBase;
+};
