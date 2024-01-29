@@ -66,7 +66,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Project Link: [https://github.com/fen-gao/e-commerce](https://github.com/fen-gao/e-commerce)
+Project Link: [https://github.com/fen-gao/e-commerce](https://github.com/fen-gao/e-commerce)  
+Email: [fernando.fnn97@gmail.com](fernando.fnn97@gmail.com)  
+Linkedin: [www.linkedin.com/in/fe-nunes](www.linkedin.com/in/fe-nunes)
 
 ## Acknowledgements
 
