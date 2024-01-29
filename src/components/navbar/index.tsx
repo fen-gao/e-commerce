@@ -137,9 +137,7 @@ export const Navbar = ({ handleSearch }: NavbarProps) => {
         </div>
       </div>
 
-      <div className="">
-        <MenuList />
-      </div>
+      <MenuList />
 
       <Drawer
         isOpen={isDrawerOpen}

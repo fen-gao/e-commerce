@@ -33,14 +33,14 @@ function ProductItem({ item }: { item: Products }) {
         </div>
 
         <div className="font-bold text-sm mt-2">{item.name}</div>
-        <div className="text-gray-500 mt-2">{item.price}</div>
+        <div className="text-gray-500 mt-2">R$ {item.price}</div>
       </div>
 
       <button
         className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-4 w-full"
         onClick={() => handleClick(item)}
       >
-        Adicinar
+        Adicionar
       </button>
     </div>
   );
@@ -52,9 +52,9 @@ export function ProductList({ products }: ProductListProps) {
   return (
     <>
       {isLoading ? (
-        <div className="w-full h-full flex justify-between items-center font-bold">
+        <h1 className="w-full h-full flex justify-between items-center font-bold">
           Carregado Produtos...
-        </div>
+        </h1>
       ) : products.length === 0 ? (
         <h1 className="w-full h-full flex justify-between items-center font-bold">
           Nenhum item encontrado
