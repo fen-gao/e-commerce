@@ -47,13 +47,17 @@ export const Drawer = ({
         isOpen ? "block" : "hidden"
       }`}
     >
-      <div className="absolute inset-0 overflow-y-auto">
+      <div className="absolute inset-0 overflow-hidden">
         <div
           className="absolute inset-0 bg-gray-900 bg-opacity-75 transition-opacity"
           onClick={onClose}
         ></div>
-        <section className="absolute inset-y-0 right-0 pl-10 max-w-full flex">
-          <div className="w-screen max-w-[600px]">
+        <section className="animeLeft absolute inset-y-0 right-0 pl-10 max-w-full flex">
+          <div
+            className={`w-screen max-w-[600px] transform transition-transform ${
+              isOpen ? "translate-x-0" : "translate-x-full"
+            }`}
+          >
             <div className="h-full flex flex-col bg-white shadow-xl overflow-y-hidden">
               <DrawerHeader onClose={onClose} title={title} />
               <div className="relative flex-1 py-6 px-4 sm:px-6 overflow-auto">

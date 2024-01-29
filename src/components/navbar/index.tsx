@@ -119,9 +119,9 @@ export const Navbar = ({ handleSearch }: NavbarProps) => {
   };
 
   return (
-    <nav className="flex flex-col mb-10 bg-[#303030]">
-      <div className="container flex flex-row justify-between items-center w-full h-[86px] ">
-        <div className="flex flex-row gap-4 items-center">
+    <nav className="flex flex-col mb-10 bg-[#303030] p-8  ">
+      <div className="container flex flex-row justify-between items-center w-full h-full ">
+        <div className="flex flex-row gap-4 items-center flex-wrap mb-4">
           <Link to="/" className="text-white font-bold hover:text-gray-300">
             Home
           </Link>

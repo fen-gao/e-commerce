@@ -9,6 +9,8 @@ export interface GlobalContextProps {
   amountCart: number;
   amoutPrice?: number;
   filteredProductList: Products[];
+  isLoading: boolean;
+  error: Error | null;
   handleFilterProductsByName: (value: string) => void;
   handleSort: (sortOption: OptionsType) => void;
   handleAddToCart: (product: Products) => void;

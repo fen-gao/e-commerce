@@ -41,9 +41,11 @@ export function GlobalContextProvider({
     }, 0);
   }, [cart]);
 
-  const { data: products } = useProductsQuery(
-    `${queryNameValue as ProductType}`
-  );
+  const {
+    data: products,
+    isLoading = false,
+    error,
+  } = useProductsQuery(`${queryNameValue as ProductType}`);
 
   const productList = useMemo(
     () => products?.data?.products ?? [],
@@ -160,6 +162,8 @@ export function GlobalContextProvider({
         updateCartItemQuantity,
         handleClearCart,
         amoutPrice,
+        error,
+        isLoading,
       }}
     >
       {children}

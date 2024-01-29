@@ -46,3 +46,31 @@ a {
   padding: 0 78px;
   margin: 0 auto;
 }
+
+@keyframes animeLeft {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes animeRight {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animeLeft {
+  animation: animeLeft 0.5s ease forwards;
+}
+
+.animeRight {
+  animation: animeRight 0.9s ease forwards;
+}
