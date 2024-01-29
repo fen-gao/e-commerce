@@ -48,9 +48,9 @@ export const MALE_PRODUCTS_QUERY = gql`
   }
 `;
 
-export const UNISEX_PRODUCTS_QUERY = gql`
-  query UnisexProducts {
-    products(where: { categories_some: { name: "Unisex" } }) {
+export const ACCESSORY_PRODUCTS_QUERY = gql`
+  query AccessoryProducts {
+    products(where: { categories_some: { name: "Accessory" } }) {
       id
       name
       description

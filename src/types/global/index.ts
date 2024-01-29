@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Products } from "../products/ index";
+import { Products } from "../products";
 
 export type OptionsType = "menor" | "maior" | "mais" | "menos";
 

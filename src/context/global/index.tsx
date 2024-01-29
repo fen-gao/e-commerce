@@ -6,7 +6,7 @@ import {
 } from "../../types/global";
 import { ProductType, useProductsQuery } from "../../hooks/use-query-hygraph";
 import useProductsPathName from "../../hooks/use-products";
-import { Products } from "../../types/products/ index";
+import { Products } from "../../types/products";
 import { options } from "../../utils/options";
 
 export const GlobalContext = createContext({} as GlobalContextProps);
@@ -34,6 +34,13 @@ export function GlobalContextProvider({
   }, [cart]);
 
   const queryNameValue = useProductsPathName();
+
+  const amoutPrice = useMemo(() => {
+    return cart.reduce((total, product) => {
+      return total + product.price * product.quantity;
+    }, 0);
+  }, [cart]);
+
   const { data: products } = useProductsQuery(
     `${queryNameValue as ProductType}`
   );
@@ -46,14 +53,14 @@ export function GlobalContextProvider({
   const [filteredProductList, setFilteredProductList] =
     useState<Products[]>(productList);
 
-  function handleFilterProductsByName(value: string) {
+  const handleFilterProductsByName = (value: string) => {
     const lowerCaseValue = value.toLowerCase();
     setFilteredProductList(
       productList.filter((product) =>
         product.name.toLowerCase().includes(lowerCaseValue)
       )
     );
-  }
+  };
 
   const handleSort = (sortOption: OptionsType) => {
     const key = options.find((option) => option.value === sortOption)?.key;
@@ -131,12 +138,6 @@ export function GlobalContextProvider({
     setCart([]);
     localStorage.removeItem("cart");
   };
-
-  const amoutPrice = useMemo(() => {
-    return cart.reduce((total, product) => {
-      return total + product.price * product.quantity;
-    }, 0);
-  }, [cart]);
 
   useEffect(() => {
     setFilteredProductList(productList);

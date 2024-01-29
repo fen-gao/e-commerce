@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Products } from "../../types/products/ index";
+import { Products } from "../../types/products";
 import { GlobalContext } from "../../context/global";
 import { DrawerContext } from "../../context/drawer";
 
@@ -30,8 +30,10 @@ function ProductItem({ item }: { item: Products }) {
           />
         )}
       </div>
+
       <div className="font-bold text-sm mt-2">{item.name}</div>
       <div className="text-gray-500 mt-2">{item.price}</div>
+
       <button
         className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-4"
         onClick={() => handleClick(item)}
@@ -42,7 +44,7 @@ function ProductItem({ item }: { item: Products }) {
   );
 }
 
-function ProductList({ products }: ProductListProps) {
+export function ProductList({ products }: ProductListProps) {
   return (
     <div className="grid grid-cols-4 gap-4">
       {products.map((item) => (
@@ -51,5 +53,3 @@ function ProductList({ products }: ProductListProps) {
     </div>
   );
 }
-
-export default ProductList;

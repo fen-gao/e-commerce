@@ -10,7 +10,7 @@ interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   customStyle?: string;
 }
 
-function Select({
+export const Select = ({
   label,
   options,
   register,
@@ -18,7 +18,7 @@ function Select({
   error,
   customStyle,
   ...rest
-}: SelectProps) {
+}: SelectProps) => {
   return (
     <div className={`flex flex-col`}>
       {label && (
@@ -40,6 +40,6 @@ function Select({
       {error && <span className="mt-1 text-xs text-red-500">{error}</span>}
     </div>
   );
-}
+};
 
 export default Select;

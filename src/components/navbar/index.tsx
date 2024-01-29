@@ -1,15 +1,16 @@
 import { ShoppingCart } from "@phosphor-icons/react";
-import MenuList from "../menu";
-import Input from "../input";
+import { MenuList } from "../menu";
+import { Input } from "../input";
 import Select from "../select";
 import { Link, useNavigate } from "react-router-dom";
 import { GlobalContext } from "../../context/global";
 import { useContext } from "react";
 import { OptionsType } from "../../types/global";
 import { options } from "../../utils/options";
-import Drawer from "../drawer";
+import { Drawer } from "../drawer";
 import { DrawerContext } from "../../context/drawer";
-import DrawerItemList from "../drawer-item-list";
+import { DrawerItemList } from "../drawer-item-list";
+import { Products } from "../../types/products";
 
 interface NavbarProps {
   handleSearch: (value: string) => void;
@@ -28,7 +29,9 @@ function SearchBar({
         <Input
           customStyle="w-[200px] h-[35px]"
           placeholder="Pesquisar"
-          onChange={(e) => handleSearch(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            handleSearch(e.target.value)
+          }
         />
       </div>
 
@@ -41,7 +44,65 @@ function SearchBar({
   );
 }
 
-export function Navbar({ handleSearch }: NavbarProps) {
+const DrawerFooter = ({
+  total,
+  handleClearCart,
+  handleNavigateToCart,
+  isDisabled,
+}: {
+  total: number;
+  handleClearCart: () => void;
+  handleNavigateToCart: () => void;
+  isDisabled: boolean | undefined;
+}) => {
+  return (
+    <div className="flex flex-row gap-4 w-full items-center">
+      {total === 0 ? (
+        <div className="px-4 h-[42px] bg-gray-900 text-white flex justify-center items-center opacity-50 cursor-not-allowed">
+          IR PARA CHECKOUT
+        </div>
+      ) : (
+        <div
+          onClick={handleNavigateToCart}
+          className="px-4 h-[42px] bg-gray-900 text-white flex justify-center items-center cursor-pointer"
+        >
+          IR PARA CHECKOUT
+        </div>
+      )}
+      <button
+        className={`px-4 h-[42px] bg-red-500 text-white flex justify-center items-center ${
+          total === 0 && "opacity-50 cursor-not-allowed"
+        }`}
+        onClick={handleClearCart}
+        disabled={isDisabled}
+      >
+        LIMPAR CARRINHO
+      </button>
+
+      <div className="px-4 h-[42px]flex justify-center items-center">
+        <span className="font-bold">Total:</span> R$ {total}
+      </div>
+    </div>
+  );
+};
+
+const DrawerContent = ({
+  cart,
+  isDisabled,
+}: {
+  cart: Products[];
+  isDisabled: boolean | undefined;
+}) => {
+  return isDisabled ? (
+    <div className="w-full h-full flex justify-center items-center">
+      Seu carrinho esta vazio
+    </div>
+  ) : (
+    <DrawerItemList item={cart} />
+  );
+};
+
+export const Navbar = ({ handleSearch }: NavbarProps) => {
   const navigate = useNavigate();
   const { toggleDrawer, isDrawerOpen } = useContext(DrawerContext);
 
@@ -84,45 +145,16 @@ export function Navbar({ handleSearch }: NavbarProps) {
         isOpen={isDrawerOpen}
         onClose={toggleDrawer}
         title="CARRINHO"
-        content={
-          isDisabled ? (
-            <div className="w-full h-full flex justify-center items-center">
-              Seu carrinho esta vazio
-            </div>
-          ) : (
-            <DrawerItemList item={cart} />
-          )
-        }
+        content={<DrawerContent cart={cart} isDisabled={isDisabled} />}
         footer={
-          <div className="flex flex-row gap-4 w-full items-center">
-            {total === 0 ? (
-              <div className="px-4 h-[42px] bg-gray-900 text-white flex justify-center items-center opacity-50 cursor-not-allowed">
-                IR PARA CHECKOUT
-              </div>
-            ) : (
-              <div
-                onClick={handleNavigateToCart}
-                className="px-4 h-[42px] bg-gray-900 text-white flex justify-center items-center cursor-pointer"
-              >
-                IR PARA CHECKOUT
-              </div>
-            )}
-            <button
-              className={`px-4 h-[42px] bg-red-500 text-white flex justify-center items-center ${
-                total === 0 && "opacity-50 cursor-not-allowed"
-              }`}
-              onClick={handleClearCart}
-              disabled={isDisabled}
-            >
-              LIMPAR CARRINHO
-            </button>
-
-            <div className="px-4 h-[42px]flex justify-center items-center">
-              <span className="font-bold">Total:</span> R$ {total}
-            </div>
-          </div>
+          <DrawerFooter
+            total={total}
+            handleClearCart={handleClearCart}
+            handleNavigateToCart={handleNavigateToCart}
+            isDisabled={isDisabled}
+          />
         }
       />
     </nav>
   );
-}
+};

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import useMenu from "../../hooks/use-menu";
 
-const MenuList = () => {
+export const MenuList = () => {
   const { menu } = useMenu();
 
   return (
@@ -17,5 +17,3 @@ const MenuList = () => {
     </ul>
   );
 };
-
-export default MenuList;

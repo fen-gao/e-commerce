@@ -5,7 +5,7 @@ interface BoxProps {
   customStyle?: string;
 }
 
-const Box = ({ children, customStyle }: BoxProps) => {
+export const Box = ({ children, customStyle }: BoxProps) => {
   return (
     <div
       className={`w-full h-full border-[1px] border-[#DEE2E7] px-[14px] py-[20px] rounded ${customStyle}`}
@@ -14,5 +14,3 @@ const Box = ({ children, customStyle }: BoxProps) => {
     </div>
   );
 };
-
-export default Box;
