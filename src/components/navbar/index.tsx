@@ -25,9 +25,9 @@ function SearchBar({
 
   return (
     <>
-      <div className="flex flex-row">
+      <div className="flex flex-row w-full">
         <Input
-          customStyle="w-[200px] h-[35px]"
+          customStyle="max-full h-[35px]"
           placeholder="Pesquisar"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             handleSearch(e.target.value)
@@ -38,7 +38,7 @@ function SearchBar({
       <Select
         options={options}
         onChange={(e) => handleSort(e.target.value as OptionsType)}
-        customStyle="block w-[160px] h-[35px]"
+        customStyle="block w-full h-[35px] xl:w-[170px]"
       />
     </>
   );
@@ -119,17 +119,17 @@ export const Navbar = ({ handleSearch }: NavbarProps) => {
   };
 
   return (
-    <nav className="flex flex-col mb-10 bg-[#303030] p-8  ">
-      <div className="container flex flex-row justify-between items-center w-full h-full ">
-        <div className="flex flex-row gap-4 items-center flex-wrap mb-4">
+    <nav className="flex flex-col mb-10 bg-[#303030]  py-4">
+      <div className="container w-full h-full flex flex-row gap-6 px-4 sm:px-6 md:px-10 lg:px-20 mx-auto flex-wrap justify-between">
+        <div className="flex flex-row gap-4 items-start flex-wrap mb-4 xl:flex-nowrap ">
           <Link to="/" className="text-white font-bold hover:text-gray-300">
             Home
           </Link>
           <SearchBar handleSearch={handleSearch} />
         </div>
-        <div className="flex flex-row gap-4">
-          <button onClick={toggleDrawer} className="relative">
-            <div className="text-sm bg-red-500 hover:bg-red-700 text-white font-bold p-2 h-6 rounded-full flex items-center justify-center absolute top-[-20px] right-[-20px]">
+        <div className="flex flex-row gap-4 mb-6">
+          <button onClick={toggleDrawer} className="relative xl:mt-4">
+            <div className="text-sm bg-red-500 hover:bg-red-700 text-white font-bold p-2 h-6 rounded-full flex items-center justify-center absolute -top-4 -right-4 xl:top-[-20px] xl:right-[-20px] sm:top-[30px]">
               {amountCart}
             </div>
             <ShoppingCart size={25} color="#fff" className="cursor-pointer" />
@@ -137,7 +137,7 @@ export const Navbar = ({ handleSearch }: NavbarProps) => {
         </div>
       </div>
 
-      <div className="flex flex-row justify-between items-center w-full h-[56px]">
+      <div className="">
         <MenuList />
       </div>
 
