@@ -74,7 +74,7 @@ export function Footer() {
       </div>
       <div className="bg-[#EFF2F4] text-[#606060] h-[76px] flex flex-row justify-center items-center px-20 mx-auto">
         <div>
-          <span>FenGao All Rights Reserved © 2024 Ecommerce.</span>
+          <span>FenGao All Rights Reserved</span>
         </div>
       </div>
     </footer>

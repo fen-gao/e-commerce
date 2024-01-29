@@ -21,7 +21,7 @@ function ProductItem({ item }: { item: Products }) {
       key={item.id}
       className="w-full max-w-[335px] h-[100%] max-h-[400px] flex flex-col justify-start items-center border p-8"
     >
-      <div className="w-full h-full">
+      <div className="w-full h-full max-w-[200px]">
         <div className="w-full">
           {item.images[0] && (
             <img
