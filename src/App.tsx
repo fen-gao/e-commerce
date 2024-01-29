@@ -14,7 +14,7 @@ export function App() {
   return (
     <>
       <Navbar handleSearch={handleFilterProductsByName} />
-      <div className="w-full h-full flex flex-col justify-between items-center px-20 mx-auto">
+      <main className="w-full h-full flex flex-col justify-between items-center px-20 mx-auto">
         <Routes>
           {menu.map(
             (item) =>
@@ -28,7 +28,7 @@ export function App() {
           )}
           <Route path="/checkout" element={<Checkout cartProducts={cart} />} />
         </Routes>
-      </div>
+      </main>
       <Footer />
     </>
   );

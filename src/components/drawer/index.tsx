@@ -42,7 +42,7 @@ export const Drawer = ({
   footer,
 }: DrawerProps) => {
   return (
-    <div
+    <section
       className={`fixed inset-0 z-50 overflow-hidden ${
         isOpen ? "block" : "hidden"
       }`}
@@ -68,6 +68,6 @@ export const Drawer = ({
           </div>
         </section>
       </div>
-    </div>
+    </section>
   );
 };
