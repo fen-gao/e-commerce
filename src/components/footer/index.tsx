@@ -46,19 +46,7 @@ export function Footer() {
       items: [
         { name: "Masculino", link: "/masculino" },
         { name: "Feminino", link: "/feminino" },
-      ],
-    },
-    {
-      title: "Baixe Nosso App",
-      items: [
-        {
-          icon: <img src={AppleIcon} alt="Apple" />,
-          link: "#",
-        },
-        {
-          icon: <img src={PlayStoreIcon} alt="Play Store" />,
-          link: "#",
-        },
+        { name: "Acessórios", link: "/acessorios" },
       ],
     },
   ];
