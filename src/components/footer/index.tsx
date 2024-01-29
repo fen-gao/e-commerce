@@ -1,6 +1,3 @@
-import AppleIcon from "public/market-button-apple.svg";
-import PlayStoreIcon from "public/market-button-playStore.svg";
-
 type FooterListDataItem = {
   name?: string;
   link: string;
