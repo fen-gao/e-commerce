@@ -52,9 +52,13 @@ export function ProductList({ products }: ProductListProps) {
   return (
     <>
       {isLoading ? (
-        <div className="w-full h-full flex justify-between items-center">
+        <div className="w-full h-full flex justify-between items-center font-bold">
           Carregado Produtos...
         </div>
+      ) : products.length === 0 ? (
+        <h1 className="w-full h-full flex justify-between items-center font-bold">
+          Nenhum item encontrado
+        </h1>
       ) : (
         <div className="animeRight grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {products.map((item) => (
