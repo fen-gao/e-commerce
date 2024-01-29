@@ -1,8 +1,10 @@
-import footer from "../../../public/footer.svg";
+import AppleIcon from "public/market-button-apple.svg";
+import PlayStoreIcon from "public/market-button-playStore.svg";
 
 type FooterListDataItem = {
-  name: string;
+  name?: string;
   link: string;
+  icon?: React.ReactNode;
 };
 
 type FooterListData = {
@@ -17,14 +19,20 @@ interface FooterListProps {
 const FooterList = ({ data }: FooterListProps) => {
   return (
     <ul className="flex flex-col gap-4">
-      <span className="block text-[#56B280] weight-[500] mb-2">
+      <span className="block text-[#000000] weight-[500] mb-2">
         {data.title}
       </span>
       {data.items.map((item, index) => (
         <li key={index}>
-          <a className="hover:text-[#56B280]" href={item.link}>
+          <a className="text-[#8B96A5] hover:text-[#000000]" href={item.link}>
             {item.name}
           </a>
+
+          {item.icon && (
+            <a href="#">
+              <span className="pointer">{item.icon}</span>
+            </a>
+          )}
         </li>
       ))}
     </ul>
@@ -34,55 +42,39 @@ const FooterList = ({ data }: FooterListProps) => {
 export function Footer() {
   const footerListData: FooterListData[] = [
     {
-      title: "Discovery",
+      title: "Links",
       items: [
-        { name: "New season", link: "#" },
-        { name: "Most searched", link: "#" },
-        { name: "Most selled", link: "#" },
+        { name: "Masculino", link: "/masculino" },
+        { name: "Feminino", link: "/feminino" },
       ],
     },
     {
-      title: "About",
+      title: "Baixe Nosso App",
       items: [
-        { name: "Help", link: "#" },
-        { name: "Shipping", link: "#" },
-        { name: "Affiliate", link: "#" },
-      ],
-    },
-    {
-      title: "Info",
-      items: [
-        { name: "Contact us", link: "#" },
-        { name: "Privacy Policies", link: "#" },
-        { name: "Terms & Conditions", link: "#" },
+        {
+          icon: <img src={AppleIcon} alt="Apple" />,
+          link: "#",
+        },
+        {
+          icon: <img src={PlayStoreIcon} alt="Play Store" />,
+          link: "#",
+        },
       ],
     },
   ];
 
   return (
-    <footer className="bg-[#272727] text-white ">
+    <footer className="bg-[#ffffff] text-[#] ">
       <div className="flex flex-row justify-between items-center px-20 mx-auto h-[383px]">
         <div className="w-full flex flex-row justify-between border-white border-t-[1px]">
-          <div className="w-[250px]">
-            <div>
-              <img src={footer} alt="" />
-            </div>
-            <p>Your natural candle made for your home and for your wellness.</p>
-          </div>
-
-          <div className="flex flex-row gap-16 mt-[43px]">
-            {footerListData.map((data, index) => (
-              <FooterList key={index} data={data} />
-            ))}
-          </div>
+          {footerListData.map((data, index) => (
+            <FooterList key={index} data={data} />
+          ))}
         </div>
       </div>
-      <div className="bg-[#E5E5E5] text-[#5E6E89] h-[76px] flex flex-row justify-between items-center px-20 mx-auto">
+      <div className="bg-[#EFF2F4] text-[#606060] h-[76px] flex flex-row justify-center items-center px-20 mx-auto">
         <div>
-          <span>@FengGao All Rights Reserved</span>
-        </div>
-        <div>
-          <span>Designed with ❤️ by uxbly</span>
+          <span>FenGao All Rights Reserved © 2024 Ecommerce.</span>
         </div>
       </div>
     </footer>

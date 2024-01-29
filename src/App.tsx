@@ -1,18 +1,35 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Footer } from "./components/footer";
 import { Navbar } from "./components/navbar";
+import { useContext } from "react";
+import { GlobalContext } from "./context/global";
+import Checkout from "./pages/checkout";
+import useMenu from "./hooks/use-menu";
 
 export function App() {
+  const { cart, handleFilterProductsByName, filteredProductList } =
+    useContext(GlobalContext);
+  const { menu } = useMenu();
+
   return (
-    <BrowserRouter>
-      <div>
-        <Navbar />
+    <>
+      <Navbar handleSearch={handleFilterProductsByName} />
+      <div className="w-full h-full flex flex-col justify-between items-center px-20 mx-auto">
         <Routes>
-          <Route path="/" element={<>Home</>} />
-          <Route path="/about" element={<>About</>} />
+          {menu.map(
+            (item) =>
+              item.component && (
+                <Route
+                  key={item.route}
+                  path={item.route}
+                  element={<item.component productList={filteredProductList} />}
+                />
+              )
+          )}
+          <Route path="/checkout" element={<Checkout cartProducts={cart} />} />
         </Routes>
-        <Footer />
       </div>
-    </BrowserRouter>
+      <Footer />
+    </>
   );
 }
