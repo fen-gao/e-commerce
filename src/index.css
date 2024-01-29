@@ -37,3 +37,12 @@ ul {
 a {
   text-decoration: none;
 }
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding: 0 78px;
+  margin: 0 auto;
+}
