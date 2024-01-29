@@ -17,7 +17,7 @@ const useProductsPathName = () => {
       queryNameValue = "female";
       break;
 
-    case "/unisex":
+    case "/acessorios":
       queryNameValue = "accessory";
       break;
 
