@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 type FooterListDataItem = {
   name?: string;
   link: string;
@@ -21,9 +23,9 @@ const FooterList = ({ data }: FooterListProps) => {
       </span>
       {data.items.map((item, index) => (
         <li key={index}>
-          <a className="text-[#8B96A5] hover:text-[#000000]" href={item.link}>
+          <Link className="text-[#8B96A5] hover:text-[#000000]" to={item.link}>
             {item.name}
-          </a>
+          </Link>
 
           {item.icon && (
             <a href="#">
